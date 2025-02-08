@@ -11,7 +11,7 @@ This project is a web application built with **Next.js** and **Flask** that allo
 - Backend API for seamless integration with other applications
 
 ## Demo Video
-[Watch the demo](react-summarizer.mp4)
+[Watch the demo](./react-summarizer.mkv)
 
 
 ## Technologies Used
