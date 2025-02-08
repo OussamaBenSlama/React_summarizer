@@ -21,24 +21,26 @@ def scrapping(url):
 scraped_content = scrapping(url)
 
 # Make the API call
-response = requests.post(
+def summarize_text(url) : 
+    scraped_content = scrapping(url)
+    response = requests.post(
     "http://localhost:11434/api/chat",
     json={
         "model": "llama3:latest",
         "messages": [ 
             {
                 "role": "user",
-                "content": f"please summarize this output: {scraped_content}"
+                "content": f"Summarize the following content by providing a title that captures the essence, a concise summary of the key points, and a conclusion. The output should only include the summarized content: {scraped_content} and ensure that the summarized content doesn't exceed 150 tokens"
             }
         ],
         "stream": False,
         "options": {
             "temperature": 0.3,
             "seed": 101, 
-            "num_predict": 100,
+            "num_predict": 150,
         }
     }
 )
 
-
-print(response.json()['message']['content'])
+    result = response.json()['message']['content']
+    return result
